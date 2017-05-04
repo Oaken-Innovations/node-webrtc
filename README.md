@@ -75,6 +75,18 @@ cd node-webrtc
 npm install
 ````
 
+### RaspberryPi (armhf)
+
+```
+git clone https://github.com/Oaken-Innovations/node-webrtc.git
+cd node-webrtc
+wget https://github.com/Oaken-Innovations/webrtc_includes_libs_armhf/blob/master/third_party_webrtc_armhf.tar.bz2
+tar -xvjf third_party_webrtc_armhf.tar.bz2
+npm install --build-from-source
+```
+
+Then you'll get updated `build/Release/wrtc.node` file importable for arm projects.
+
 ## Troubleshooting
 
 ### Error while loading libtinfo.so.5 on Linux
