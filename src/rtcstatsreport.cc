@@ -53,7 +53,7 @@ NAN_METHOD(RTCStatsReport::names) {
   Local<Array> names = Nan::New<Array>(values.size());
   size_t i = 0;
   for (auto const &pair : values) {
-    const rtc::linked_ptr<webrtc::StatsReport::Value> value = pair.second;
+    const rtc::scoped_refptr<webrtc::StatsReport::Value> value = pair.second;
     std::string display_name = value->display_name();
     names->Set(i++, Nan::New<String>(display_name).ToLocalChecked());
   }
@@ -74,7 +74,7 @@ NAN_METHOD(RTCStatsReport::stat) {
   Local<Value> found = Nan::Undefined();
   webrtc::StatsReport::Values values = self->report->values();
   for (auto const &pair : values) {
-    const rtc::linked_ptr<webrtc::StatsReport::Value> value = pair.second;
+    const rtc::scoped_refptr<webrtc::StatsReport::Value> value = pair.second;
     std::string display_name = std::string(value->display_name());
     if (display_name.compare(name) == 0) {
       found = Nan::New<String>(value->ToString()).ToLocalChecked();

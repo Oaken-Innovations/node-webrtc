@@ -218,7 +218,7 @@ void PeerConnection::OnIceCandidate(const webrtc::IceCandidateInterface* candida
   TRACE_END;
 }
 
-void PeerConnection::OnDataChannel(webrtc::DataChannelInterface* jingle_data_channel) {
+void PeerConnection::OnDataChannel(rtc::scoped_refptr<webrtc::DataChannelInterface> jingle_data_channel) {
   TRACE_CALL;
   DataChannelObserver* observer = new DataChannelObserver(jingle_data_channel);
   PeerConnection::DataChannelEvent* data = new PeerConnection::DataChannelEvent(observer);
@@ -226,12 +226,12 @@ void PeerConnection::OnDataChannel(webrtc::DataChannelInterface* jingle_data_cha
   TRACE_END;
 }
 
-void PeerConnection::OnAddStream(webrtc::MediaStreamInterface* stream) {
+void PeerConnection::OnAddStream(rtc::scoped_refptr<webrtc::MediaStreamInterface> stream) {
   TRACE_CALL;
   TRACE_END;
 }
 
-void PeerConnection::OnRemoveStream(webrtc::MediaStreamInterface* stream) {
+void PeerConnection::OnRemoveStream(rtc::scoped_refptr<webrtc::MediaStreamInterface> stream) {
   TRACE_CALL;
   TRACE_END;
 }
